@@ -1,0 +1,19 @@
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+<http://bittich.be/nordine> a vcard:Individual;
+                            vcard:hasEmail <mailto:nordine@bittich.be>;
+                            vcard:fn "Nordine Bittich";
+                            vcard:hasAddress <http://bittich.be/nordine/address>;
+                            vcard:hasTelephone <http://bittich.be/nordine/telephone>;
+                            vcard:nickname "nbittich" .
+
+
+<http://bittich.be/nordine/address> a vcard:Home;
+                                    vcard:country-name "Belgium";
+                                    vcard:locality "Tervuren";
+                                    vcard:postal-code "3080";
+                                    vcard:street-address "Brusselssteenweg 72".
+
+<http://bittich.be/nordine/telephone> a vcard:Home,
+                                        vcard:Voice;
+                                      vcard:hasValue <tel:+32487878787>.

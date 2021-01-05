@@ -19,9 +19,17 @@
 ;; The following is the commented out version of those used in the
 ;; commented out domain.lisp.
 
-;; (add-prefix "dcat" "http://www.w3.org/ns/dcat#")
-;; (add-prefix "dct" "http://purl.org/dc/terms/")
-;; (add-prefix "skos" "http://www.w3.org/2004/02/skos/core#")
+(add-prefix "dcat" "http://www.w3.org/ns/dcat#")
+(add-prefix "dct" "http://purl.org/dc/terms/")
+(add-prefix "skos" "http://www.w3.org/2004/02/skos/core#")
+(add-prefix "vcard" "http://www.w3.org/2006/vcard/ns#")
+(add-prefix "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+(add-prefix "time" "http://www.w3.org/2006/time#")
+(add-prefix "owl" "http://www.w3.org/2002/07/owl#")
+(add-prefix "org" "http://www.w3.org/ns/org#")
+(add-prefix "prov" "http://www.w3.org/ns/prov#")
+(add-prefix "gr" "http://purl.org/goodrelations/v1#")
+(add-prefix "foaf" "http://xmlns.com/foaf/0.1/")
 
 
 ;;;;;

@@ -27,6 +27,12 @@ services:
     image: semtech/mu-login-service:2.9.0
     links:
       - db:database
+  migrations:
+    image: semtech/mu-migrations-service
+    links:
+      - db:database
+    volumes:
+      - ./config/migrations:/data/migrations
   registration:
     image: semtech/mu-registration-service:2.6.0
     links:
