@@ -16,13 +16,16 @@ export default class LoginComponent extends Component {
         password:this.password
       });
     } catch(error) {
+      console.error(error)
       if (e.errors?.length && e.errors[0].title) {
         this.errorMessage = e.errors[0].title;
       } else {
-        if (e.status == 403)
+        if (e.status == 403){
           this.errorMessage = this.forbiddenMessage;
-        else
+        }
+        else{
           this.errorMessage = this.failureMessage;
+        }
       }
     }
 
