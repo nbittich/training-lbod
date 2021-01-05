@@ -64,4 +64,36 @@
 ;;   :resource-base (s-url "http://webcat.tmp.tenforce.com/themes/")
 ;;   :on-path "themes")
 
-;;
+(define-resource individual ()
+  :class (s-prefix "vcard:Individual")
+  :properties `((:email :string ,(s-prefix "vcard:hasEmail"))
+                (:fullName :string ,(s-prefix "vcard:fn"))
+                (:nickname :string ,(s-prefix "vcard:nickname")))
+  :has-one `((address :via ,(s-prefix "vcard:Home")
+                     :inverse t
+                     :as "address")
+            (telephone :via ,(s-prefix "vcard:Voice")
+                     :inverse t
+                     :as "telephone"))
+  :resource-base (s-url "http://bittich.be/individuals/")
+  :on-path "individuals")
+
+
+(define-resource telephone ()
+  :class (s-prefix "vcard:Voice")
+  :properties `((:value :string ,(s-prefix "vcard:hasValue")))
+  :has-many `((individual :via ,(s-prefix "vcard:Individual")
+                         :as "individuals"))
+  :resource-base (s-url "http://bittich.be/telephones/")
+  :on-path "telephones")
+
+(define-resource address ()
+  :class (s-prefix "vcard:Home")
+  :properties `((:countryName :string ,(s-prefix "vcard:country-name"))
+                (:locality :string ,(s-prefix "vcard:locality"))
+                (:postCode :string ,(s-prefix "vcard:postal-code"))
+                (:streetAddress :string ,(s-prefix "vcard:street-address")))
+  :has-many `((individual :via ,(s-prefix "vcard:Individual")
+                         :as "individuals"))
+  :resource-base (s-url "http://bittich.be/addresses/")
+  :on-path "addresses")
