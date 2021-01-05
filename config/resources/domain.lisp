@@ -67,7 +67,7 @@
 (define-resource individual ()
   :class (s-prefix "vcard:Individual")
   :properties `((:email :string ,(s-prefix "vcard:hasEmail"))
-                (:fullName :string ,(s-prefix "vcard:fn"))
+                (:fullname :string ,(s-prefix "vcard:fn"))
                 (:nickname :string ,(s-prefix "vcard:nickname")))
   :has-one `((address :via ,(s-prefix "vcard:Home")
                      :inverse t
@@ -89,10 +89,10 @@
 
 (define-resource address ()
   :class (s-prefix "vcard:Home")
-  :properties `((:countryName :string ,(s-prefix "vcard:country-name"))
+  :properties `((:country :string ,(s-prefix "vcard:country-name"))
                 (:locality :string ,(s-prefix "vcard:locality"))
-                (:postCode :string ,(s-prefix "vcard:postal-code"))
-                (:streetAddress :string ,(s-prefix "vcard:street-address")))
+                (:postcode :string ,(s-prefix "vcard:postal-code"))
+                (:street :string ,(s-prefix "vcard:street-address")))
   :has-many `((individual :via ,(s-prefix "vcard:Individual")
                          :as "individuals"))
   :resource-base (s-url "http://bittich.be/addresses/")
