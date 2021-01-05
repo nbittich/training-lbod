@@ -1,0 +1,11 @@
+<form class="d-flex" {{on "submit" (fn this.authenticate)}}>
+  <input class="form-control me-2" type="text" placeholder="NickName" aria-label="NickName" value={{this.identification}} {{on "change" (fn this.updateIdentification)}}>
+  <input class="form-control me-2" type="password" placeholder="Password" aria-label="Password" value={{this.password}} {{on "change" (fn this.updatePassword)}}>
+  <button type="submit" class="btn btn-outline-primary">Login</button>
+</form>
+{{!--
+  {{#if this.errorMessage}}
+    <p>{{this.errorMessage}}</p>
+  {{/if}}
+
+--}}
