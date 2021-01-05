@@ -1,1 +1,12 @@
-hello
+<ul>
+  {{#each @model.telephones as |telephone|}}
+    <li>{{telephone.value}}</li>
+  {{/each}}
+  {{#each @model.addresses as |address|}}
+    <li>{{address.fullAddress}}</li>
+  {{/each}}
+  {{#each @model.individuals as |individual|}}
+    <li>{{individual.fullname}} aka '{{individual.nickname}}', {{individual.email}}, {{individual.address.fullAddress}}</li>
+  {{/each}}
+
+</ul>
