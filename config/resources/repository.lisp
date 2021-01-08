@@ -30,7 +30,9 @@
 (add-prefix "prov" "http://www.w3.org/ns/prov#")
 (add-prefix "gr" "http://purl.org/goodrelations/v1#")
 (add-prefix "foaf" "http://xmlns.com/foaf/0.1/")
+(add-prefix "bi" "http://bittich.be/bce/")
 
+(add-prefix "rdfs" "http://www.w3.org/2000/01/rdf-schema#")
 
 ;;;;;
 ;; You can use the muext: prefix when you're still searching for

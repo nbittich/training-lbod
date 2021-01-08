@@ -97,3 +97,43 @@
                          :as "individuals"))
   :resource-base (s-url "http://bittich.be/addresses/")
   :on-path "addresses")
+
+(define-resource code ()
+     :class (s-prefix "bi:Code")
+     :properties `((:label :language-string-set ,(s-prefix "rdfs:label")))
+     :resource-base (s-url "http://bittich.be/bce/code/")
+     :features '(include-uri)
+     :on-path "codes")
+
+(define-resource company ()
+     :class (s-prefix "org:Organization")
+     :properties `((:startdate :string ,(s-prefix "bi:hasStartDate"))
+                  (:enterpriseNumber :string ,(s-prefix "mu:uuid"))
+     )
+      :has-one `((code :via ,(s-prefix "bi:hasJuridicalForm")
+                       :as "juridicalform")
+                (denomination :via ,(s-prefix "org:hasUnit")
+                         :inverse t
+                         :as "denomination")
+                 (code :via ,(s-prefix "bi:hasJuridicalSituation")
+                       :as "juridicalsituation")
+                 (code :via ,(s-prefix "bi:hasStatus")
+                       :as "status")
+                 (code :via ,(s-prefix "bi:hasTypeOfCompany")
+                       :as "typeofcompany"))
+  
+     :features '(include-uri)
+     :on-path "companies")
+
+(define-resource denomination ()
+     :class (s-prefix "bi:Denomination")
+     :properties `((:name :language-string-set ,(s-prefix "foaf:name")))
+     :resource-base (s-url "http://bittich.be/bce/denomination/")
+     :has-one `((company :via ,(s-prefix "org:hasUnit")
+                       :as "company")
+              )
+     :features '(include-uri)
+     :on-path "codes")
+
+(defparameter *include-count-in-paginated-responses* t)
+
