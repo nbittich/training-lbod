@@ -31,6 +31,12 @@ defmodule Dispatcher do
   match "/companies/*path" do
     Proxy.forward conn, path, "http://resource/companies/"
   end
+  match "/contacts/*path" do
+    Proxy.forward conn, path, "http://resource/contacts/"
+  end
+  match "/denominations/*path" do
+    Proxy.forward conn, path, "http://resource/denominations/"
+  end
 
   match "/sessions/*path" do
     Proxy.forward conn, path, "http://login/sessions/"

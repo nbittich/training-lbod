@@ -97,6 +97,11 @@
                          :as "individuals"))
   :resource-base (s-url "http://bittich.be/addresses/")
   :on-path "addresses")
+  
+;; ============================================================================================================================================
+;; TODO PUT IN A SEPARATE FILE
+;; BCE API
+;; ============================================================================================================================================
 
 (define-resource code ()
      :class (s-prefix "bi:Code")
@@ -115,6 +120,9 @@
                 (denomination :via ,(s-prefix "org:hasUnit")
                          :inverse t
                          :as "denomination")
+                (contact :via ,(s-prefix "org:hasUnit")
+                         :inverse t
+                         :as "contact")
                  (code :via ,(s-prefix "bi:hasJuridicalSituation")
                        :as "juridicalsituation")
                  (code :via ,(s-prefix "bi:hasStatus")
@@ -133,7 +141,19 @@
                        :as "company")
               )
      :features '(include-uri)
-     :on-path "codes")
+     :on-path "denominations")
+
+(define-resource contact ()
+     :class (s-prefix "bi:Contact")
+     :properties `((:email :string ,(s-prefix "foaf:mbox"))
+                  (:phone :language-string-set ,(s-prefix "foaf:phone"))
+                  (:website :language-string-set ,(s-prefix "foaf:homepage")))
+     :resource-base (s-url "http://bittich.be/bce/denomination/")
+     :has-one `((company :via ,(s-prefix "org:hasUnit")
+                       :as "company")
+              )
+     :features '(include-uri)
+     :on-path "contacts")
 
 (defparameter *include-count-in-paginated-responses* t)
 
