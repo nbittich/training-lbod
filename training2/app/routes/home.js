@@ -2,13 +2,21 @@ import Route from '@ember/routing/route';
 
 export default class HomeRoute extends Route {
   async model(){
-    const telephones = await this.store.findAll('telephone');
-    const addresses = await this.store.findAll('address');
-    const individuals = await this.store.findAll('individual');
+    const findAll = async type => {
+      try {
+        return await this.store.findAll(type);
+      }catch (e){
+        return []
+      }
+    }
+    const telephones = await findAll('telephone');
+    const addresses = await findAll('address');
+    const individuals = await findAll('individual');
     return {
       telephones: telephones,
       addresses: addresses,
       individuals: individuals
     }
   }
+
 }

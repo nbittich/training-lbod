@@ -28,6 +28,7 @@ services:
     links:
       - db:database
   migrations:
+    restart: always
     image: semtech/mu-migrations-service
     links:
       - db:database
@@ -38,8 +39,12 @@ services:
     links:
       - db:database
   resource:
-    image: semtech/mu-cl-resources:1.18.0
+    image: semtech/mu-cl-resources:1.20.0
     links:
       - db:database
     volumes:
       - ./config/resources:/config
+  cache:
+    image: semtech/mu-cache:2.0.1
+    links:
+      - resource:backend

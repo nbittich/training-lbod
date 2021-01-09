@@ -1,12 +1,21 @@
-<ul>
-  {{#each @model.telephones as |telephone|}}
-    <li>{{telephone.value}}</li>
-  {{/each}}
-  {{#each @model.addresses as |address|}}
-    <li>{{address.fullAddress}}</li>
-  {{/each}}
-  {{#each @model.individuals as |individual|}}
-    <li>{{individual.fullname}} aka '{{individual.nickname}}', {{individual.email}}, {{individual.address.fullAddress}}</li>
-  {{/each}}
-
-</ul>
+{{#if isLoading}}
+  loading...
+{{else}}
+  <ul>
+    {{#each @model.telephones as |telephone|}}
+      <li>{{telephone.value}}</li>
+    {{/each}}
+    {{#each @model.addresses as |address|}}
+      <li>{{address.fullAddress}}</li>
+    {{/each}}
+    {{#each @model.individuals as |individual|}}
+      <li>{{individual.fullname}} aka '{{individual.nickname}}', {{individual.email}}, {{individual.address.fullAddress}}, {{individual.telephone.value}}</li>
+    {{/each}}
+  </ul>
+{{/if}}
+<div class="row">
+  <div class="btn-group">
+    <button class="btn btn-primary" {{on 'click' this.createRecord}}>Create</button>
+    <button class="btn btn-danger" {{on 'click' this.deleteAllRecords}}>Delete All</button>
+  </div>
+</div>

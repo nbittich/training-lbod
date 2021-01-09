@@ -12,17 +12,11 @@ defmodule Dispatcher do
   plug :match
   plug :dispatch
 
-  match "/telephones/*path" do
-    Proxy.forward conn, path, "http://resource/telephones/"
-  end
 
   match "/addresses/*path" do
     Proxy.forward conn, path, "http://resource/addresses/"
   end
 
-  match "/individuals/*path" do
-    Proxy.forward conn, path, "http://resource/individuals/"
-  end
 
   match "/codes/*path" do
     Proxy.forward conn, path, "http://resource/codes/"
