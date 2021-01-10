@@ -1,0 +1,50 @@
+
+{{#if this.currentPage.length }}
+<div class="d-flex justify-content-between mb-1">
+    <div class="my-auto">
+        <i>Current Page: {{this.currentPage.meta.pagination.self.number}} /</i>
+        <i class="me-1" >Total Elements: {{this.currentPage.meta.count}}</i>
+    </div>
+    <div>
+        <button class="btn btn-primary" {{on 'click' this.prev}} disabled={{this.isFirstPage}}>Prev</button>&nbsp;
+        <button class="btn btn-primary " {{on 'click' this.next}} disabled={{this.isLastPage}}>Next</button>
+
+    </div>
+
+</div>
+{{/if}}
+<div class="table-responsive">
+  <input type="Search" class="form-control mb-1" placeholder="search">
+
+    <table class="table table-sm table-bordered">
+        <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th>Code</th>
+                <th>Description@fr</th>
+                <th>Description@nl</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#unless this.currentPage.length }}
+            <tr>
+                <td colspan="3">No data</td>
+            </tr>
+            {{else}}
+            {{#each currentPage as |code index|}}
+            <tr>
+                <td class="text-center">{{row-number  currentPage.meta.pagination index }}</td>
+                <td>{{code.id}}</td>
+                <td>{{code.labelFr.content}}</td>
+                <td>{{code.labelNl.content}}</td>
+
+
+            </tr>
+            {{/each}}
+
+
+            {{/unless}}
+
+        </tbody>
+    </table>
+</div>

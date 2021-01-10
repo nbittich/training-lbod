@@ -12,10 +12,11 @@
       <li>{{individual.fullname}} aka '{{individual.nickname}}', {{individual.email}}, {{individual.address.fullAddress}}, {{individual.telephone.value}}</li>
     {{/each}}
   </ul>
-{{/if}}
+
 <div class="row">
   <div class="btn-group">
     <button class="btn btn-primary" {{on 'click' this.createRecord}}>Create</button>
     <button class="btn btn-danger" {{on 'click' this.deleteAllRecords}}>Delete All</button>
   </div>
 </div>
+{{/if}}

@@ -36,7 +36,8 @@
 
 (define-resource address ()
      :class (s-prefix "bi:Address")
-     :properties `((:address :language-string-set ,(s-prefix "vcard3:ADR")))
+     :properties `((:address :language-string-set ,(s-prefix "vcard3:ADR"))
+                   (:zipcode :string ,(s-prefix "vcard3:Pcode")))
      :resource-base (s-url "http://bittich.be/bce/address/")
      :has-one `((company :via ,(s-prefix "bi:addressBelongsTo")
                        :as "company")

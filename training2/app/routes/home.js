@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 
 export default class HomeRoute extends Route {
-  async model(){
+  /* async model(){
     const findAll = async type => {
       try {
         return await this.store.findAll(type);
@@ -17,6 +17,6 @@ export default class HomeRoute extends Route {
       addresses: addresses,
       individuals: individuals
     }
-  }
+  } */
 
 }

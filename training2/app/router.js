@@ -15,4 +15,5 @@ Router.map(function() {
 
   this.route('home', {path:'/'});
 
+  this.route('codes', {path:'/codes'});
 });
