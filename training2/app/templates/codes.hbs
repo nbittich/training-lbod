@@ -1,9 +1,8 @@
-
 {{#if this.currentPage.length }}
 <div class="d-flex justify-content-between mb-1">
     <div class="my-auto">
-        <i>Current Page: {{this.currentPage.meta.pagination.self.number}} /</i>
-        <i class="me-1" >Total Elements: {{this.currentPage.meta.count}}</i>
+        <i>Current Page: {{currentPageNumber }} /</i>
+        <i class="me-1">Total Elements: {{this.currentPage.meta.count}}</i>
     </div>
     <div>
         <button class="btn btn-primary" {{on 'click' this.prev}} disabled={{this.isFirstPage}}>Prev</button>&nbsp;
@@ -14,13 +13,28 @@
 </div>
 {{/if}}
 <div class="table-responsive">
-  <input type="Search" class="form-control mb-1" placeholder="search">
+    <input type="Search" class="form-control mb-1" placeholder="search">
 
     <table class="table table-sm table-bordered">
         <thead>
             <tr>
                 <th class="text-center">#</th>
-                <th>Code</th>
+                <th>
+                    <div class="d-flex justify-content-between">
+                        <span class="my-auto">Code</span>
+                        <span class="my-auto">
+                            <a role="button" {{on 'click' this.toggleSort}} class="text-dark">
+                                {{#if this.sortDirection}}
+                                    <FaIcon @icon="arrow-up" />
+                                {{else}}
+                                    <FaIcon @icon="arrow-down" />
+                                {{/if}}
+
+                            </a>
+                        </span>
+
+                    </div>
+                </th>
                 <th>Description@fr</th>
                 <th>Description@nl</th>
             </tr>
@@ -28,13 +42,13 @@
         <tbody>
             {{#unless this.currentPage.length }}
             <tr>
-                <td colspan="3">No data</td>
+                <td colspan="4">No data</td>
             </tr>
             {{else}}
             {{#each currentPage as |code index|}}
             <tr>
-                <td class="text-center">{{row-number  currentPage.meta.pagination index }}</td>
-                <td>{{code.id}}</td>
+                <td class="text-center">{{row-number currentPage.meta.pagination index }}</td>
+                <td>{{code.code}}</td>
                 <td>{{code.labelFr.content}}</td>
                 <td>{{code.labelNl.content}}</td>
 

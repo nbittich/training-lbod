@@ -7,7 +7,9 @@
 
 (define-resource code ()
      :class (s-prefix "bi:Code")
-     :properties `((:label :language-string-set ,(s-prefix "rdfs:label")))
+     :properties `(
+          (:label :language-string-set ,(s-prefix "rdfs:label"))
+          (:code :string ,(s-prefix "mu:uuid")))
      :resource-base (s-url "http://bittich.be/bce/code/")
      :features '(include-uri)
      :on-path "codes")
