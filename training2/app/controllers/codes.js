@@ -19,6 +19,9 @@ export default class CodesController extends Controller {
     load() {
         this.set("currentPage", null);
         this.codes = this.store.query('code', {
+            filter: {
+                code: this.search?.toUpperCase()
+            },
             sort: this.sortDirection ? this.sort : '-' + this.sort,
             page: {
                 number: this.page,
@@ -38,9 +41,9 @@ export default class CodesController extends Controller {
         return !curr || curr === 0;
     }
 
-    get currentPageNumber(){
+    get currentPageNumber() {
         const curr = this.currentPage.meta.pagination.self?.number;
-        return !curr || curr === 0 ? 1: curr + 1;
+        return !curr || curr === 0 ? 1 : curr + 1;
     }
 
 
@@ -50,6 +53,19 @@ export default class CodesController extends Controller {
         this.load();
     }
 
+    @action
+    runSearch(e) {
+        const searchVal = e.target.value;
+        if (searchVal.length === 0) {
+            this.set("search", null);
+            this.load();
+        } else if (searchVal.length > 2) {
+            this.set("currentPage", null);
+            this.set("search", searchVal);
+            this.set('page', 0);
+            this.load(searchVal.toUpperCase());
+        }
+    }
 
     @action
     toggleSort() {

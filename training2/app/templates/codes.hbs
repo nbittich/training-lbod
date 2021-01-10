@@ -13,7 +13,7 @@
 </div>
 {{/if}}
 <div class="table-responsive">
-    <input type="Search" class="form-control mb-1" placeholder="search">
+    <input type="text" class="form-control mb-1" placeholder="search" value={{this.search}} {{on 'input' (fn this.runSearch)}} >
 
     <table class="table table-sm table-bordered">
         <thead>
