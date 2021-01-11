@@ -23,6 +23,12 @@ services:
     volumes:
       - ./data/db:/data
       - ./config/virtuoso/virtuoso.ini:/data/virtuoso.ini
+  file:
+    image: semtech/mu-file-service:3.1.2
+    links:
+      - db:database
+    volumes:
+      - ./data/files:/share
   login:
     image: semtech/mu-login-service:2.9.0
     links:

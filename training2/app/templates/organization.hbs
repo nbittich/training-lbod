@@ -1,5 +1,12 @@
 <h2>Company N°{{@model.id}}</h2>
 <hr>
+<div class="d-flex  mb-2">
+    <div class="text-right">
+        <label for="formFile" class="form-label text-right">New attachment</label>
+        <input class="form-control" value={{this.file}} type="file" id="formFile" {{on "change" this.setFile }} accept="image/png,image/jpeg,application/pdf" multiple="false">
+         <button class="btn btn-outline-primary mt-1" {{on "click" this.upload}} disabled={{this.isValid}}>Upload</button>
+    </div>
+</div>
 
 <div class="d-flex flex-column">
     <div class="card mb-1">
@@ -17,7 +24,7 @@
                 <strong>"{{@model.denomination.nameNl.content}}"</strong>
             </div>
 
-            
+
         </div>
     </div>
     <div class="card mb-1">
@@ -64,11 +71,11 @@
                 <span class="text-decoration-underline text-uppercase ">Juridical form@nl:&nbsp;</span>
                 <strong>"{{@model.juridicalform.labelNl.content}}"</strong>
             </div>
-            
+
         </div>
     </div>
     {{#if @model.address.hasAddress }}
-     <div class="card mb-1">
+    <div class="card mb-1">
         <div class="card-header">
             Address
         </div>
@@ -87,13 +94,13 @@
                 <strong>{{@model.address.addressNl.content}}</strong>
             </div>
 
-            
+
         </div>
     </div>
     {{/if}}
 
     {{#if @model.contact.hasContact }}
-     <div class="card mb-1">
+    <div class="card mb-1">
         <div class="card-header">
             Contact
         </div>
@@ -116,8 +123,8 @@
                 <strong><a href="{{@model.contact.website}}"></a>{{@model.contact.website}}</strong>
             </div>
             {{/if}}
-            
+
         </div>
     </div>
-     {{/if}}
+    {{/if}}
 </div>

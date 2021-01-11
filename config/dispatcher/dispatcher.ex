@@ -16,7 +16,14 @@ defmodule Dispatcher do
   match "/addresses/*path" do
     Proxy.forward conn, path, "http://resource/addresses/"
   end
+  
+  match "/uploads/*path" do
+    Proxy.forward conn, path, "http://file/files/"
+  end
 
+  match "/files/*path" do
+    Proxy.forward conn, path, "http://resource/files/"
+  end
 
   match "/codes/*path" do
     Proxy.forward conn, path, "http://resource/codes/"
