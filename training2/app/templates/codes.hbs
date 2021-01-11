@@ -48,7 +48,12 @@
         <tbody>
             {{#unless this.currentPage.length }}
             <tr>
-                <td colspan="4">No data</td>
+                <td class="text-center" colspan="4">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+
+                </td>
             </tr>
             {{else}}
             {{#each currentPage as |code index|}}

@@ -1,0 +1,123 @@
+<h2>Company N°{{@model.id}}</h2>
+<hr>
+
+<div class="d-flex flex-column">
+    <div class="card mb-1">
+        <div class="card-header">
+            Names
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase me-1">French:</span>
+                <strong>"{{@model.denomination.nameFr.content}}"</strong>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase ">Dutch:&nbsp;</span>
+                <strong>"{{@model.denomination.nameNl.content}}"</strong>
+            </div>
+
+            
+        </div>
+    </div>
+    <div class="card mb-1">
+        <div class="card-header">
+            Meta
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase me-1">Status@fr:</span>
+                <strong>"{{@model.status.labelFr.content}}"</strong>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase ">Status@nl:&nbsp;</span>
+                <strong>"{{@model.status.labelNl.content}}"</strong>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase me-1">Type Of Company@fr:</span>
+                <strong>"{{@model.typeofcompany.labelFr.content}}"</strong>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase ">Type Of Company@nl:&nbsp;</span>
+                <strong>"{{@model.typeofcompany.labelNl.content}}"</strong>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase me-1">Juridical situation@fr:</span>
+                <strong>"{{@model.juridicalsituation.labelFr.content}}"</strong>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase ">Juridical situation@nl:&nbsp;</span>
+                <strong>"{{@model.juridicalsituation.labelNl.content}}"</strong>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase me-1">Juridical form@fr:</span>
+                <strong>"{{@model.juridicalform.labelFr.content}}"</strong>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase ">Juridical form@nl:&nbsp;</span>
+                <strong>"{{@model.juridicalform.labelNl.content}}"</strong>
+            </div>
+            
+        </div>
+    </div>
+    {{#if @model.address.hasAddress }}
+     <div class="card mb-1">
+        <div class="card-header">
+            Addresses
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase ">Default:&nbsp;</span>
+                <strong>{{@model.address.addressEn.content}}</strong>
+            </div>
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase me-1">French:</span>
+                <strong>{{@model.address.addressFr.content}}</strong>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase ">Dutch:&nbsp;</span>
+                <strong>{{@model.address.addressNl.content}}</strong>
+            </div>
+
+            
+        </div>
+    </div>
+    {{/if}}
+
+    {{#if @model.contact.hasContact }}
+     <div class="card mb-1">
+        <div class="card-header">
+            Contacts
+        </div>
+        <div class="card-body">
+            {{#if @model.contact.email}}
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase ">Email:&nbsp;</span>
+                <strong><a href="mailto:{{@model.contact.email}}"></a>{{@model.contact.email}}</strong>
+            </div>
+            {{/if}}
+            {{#if @model.contact.phone}}
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase me-1">Phone:</span>
+                <strong>{{@model.contact.phone}}</strong>
+            </div>
+            {{/if}}
+            {{#if @model.contact.website}}
+            <div class="d-flex justify-content-between">
+                <span class="text-decoration-underline text-uppercase ">Dutch:&nbsp;</span>
+                <strong><a href="{{@model.contact.website}}"></a>{{@model.contact.website}}</strong>
+            </div>
+            {{/if}}
+            
+        </div>
+    </div>
+     {{/if}}
+</div>

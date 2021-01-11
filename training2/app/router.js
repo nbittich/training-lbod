@@ -17,4 +17,5 @@ Router.map(function() {
 
   this.route('codes', {path:'/codes'});
   this.route('organizations', {path:'/organizations'});
+  this.route('organization', {path:'/organization/:company_id'});
 });

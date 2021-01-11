@@ -17,21 +17,25 @@
 <div class="table-responsive">
     <div class="d-flex justify-content-between  mb-2">
         <div class="input-group me-1">
-            <input type="search" class="form-control" placeholder="by vat" value={{this.searchByVat}} {{on 'input' (fn this.updateSearchByVatNumber)}} aria-describedby="basic-addon1" aria-label="Filter By VAT N°">
+            <input type="search" class="form-control" placeholder="by vat" value={{this.searchByVat}} {{on 'input' (fn
+                this.updateSearchByVatNumber)}} aria-describedby="basic-addon1" aria-label="Filter By VAT N°">
             <a class="input-group-text" id="basic-addon1" role="button" {{on 'click' this.runSearchByVatNumber}}>
                 <FaIcon @icon="search"></FaIcon>
             </a>
-            
+
         </div>
         <div class="input-group me-1">
-            <input type="search" class="form-control" placeholder="by name" value={{this.searchByName}} {{on 'input' (fn this.updateSearchByName)}} aria-describedby="basic-addon2" aria-label="Filter By Name">
-                 <a role="button" class="input-group-text" id="basic-addon2" {{on 'click' this.runSearchByName}}>
+            <input type="search" class="form-control" placeholder="by name" value={{this.searchByName}} {{on 'input' (fn
+                this.updateSearchByName)}} aria-describedby="basic-addon2" aria-label="Filter By Name">
+            <a role="button" class="input-group-text" id="basic-addon2" {{on 'click' this.runSearchByName}}>
                 <FaIcon @icon="search"></FaIcon>
             </a>
         </div>
         <div class="input-group">
-            <input type="search" class="form-control" placeholder="by zipcode" value={{this.searchByZipCode}} {{on 'input' (fn this.updateSearchByZipCode)}} aria-describedby="basic-addon3" aria-label="Filter By ZipCode">
-                 <a role="button" class="input-group-text" id="basic-addon3" {{on 'click' this.runSearchByZipCode}}>
+            <input type="search" class="form-control" placeholder="by zipcode" value={{this.searchByZipCode}}
+                {{on 'input' (fn this.updateSearchByZipCode)}} aria-describedby="basic-addon3"
+                aria-label="Filter By ZipCode">
+            <a role="button" class="input-group-text" id="basic-addon3" {{on 'click' this.runSearchByZipCode}}>
                 <FaIcon @icon="search"></FaIcon>
             </a>
         </div>
@@ -62,12 +66,18 @@
                 <th>Name@fr</th>
                 <th>Name@nl</th>
                 <th>Start Date</th>
+                <th class="text-center">Detail</th>
+
             </tr>
         </thead>
         <tbody>
             {{#unless this.currentPage.length }}
             <tr>
-                <td colspan="5">No data</td>
+                <td class="text-center" colspan="6">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </td>
             </tr>
             {{else}}
             {{#each currentPage as |org index|}}
@@ -78,6 +88,11 @@
                 <td>{{org.denomination.nameNl.content}}</td>
 
                 <td>{{org.startdate}}</td>
+                <td class="text-center">
+                    <LinkTo @route="organization" @model={{org}} class="btn btn-link">
+                        <FaIcon @icon="eye"></FaIcon>
+                    </LinkTo>
+                </td>
             </tr>
             {{/each}}
 
