@@ -15,10 +15,23 @@
 {{/if}}
 <hr>
 <div class="table-responsive">
-    <div class="input-group mb-2">
-        <span class="input-group-text" id="basic-addon1"><FaIcon @icon="search"></FaIcon></span>
-                <input type="search" class="form-control" placeholder="search" value={{this.search}} {{on 'input' (fn this.runSearch)}} aria-describedby="basic-addon1" aria-label="Search">
+    <div class="d-flex justify-content-between  mb-2">
+        <div class="input-group me-1">
+            <input type="search" class="form-control" placeholder="by vat" value={{this.searchByVat}} {{on 'input' (fn this.updateSearchByVatNumber)}} aria-describedby="basic-addon1" aria-label="Filter By VAT N°">
+            <a class="input-group-text" id="basic-addon1" role="button" {{on 'click' this.runSearchByVatNumber}}>
+                <FaIcon @icon="search"></FaIcon>
+            </a>
+            
+        </div>
+        <div class="input-group me-1">
+            <input type="search" class="form-control" placeholder="by name" value={{this.searchByName}} {{on 'input' (fn this.updateSearchByName)}} aria-describedby="basic-addon2" aria-label="Filter By Name">
+                 <a role="button" class="input-group-text" id="basic-addon2" {{on 'click' this.runSearchByName}}>
+                <FaIcon @icon="search"></FaIcon>
+            </a>
+        </div>
+       
     </div>
+
 
 
     <table class="table table-sm table-bordered">

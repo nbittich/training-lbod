@@ -9,6 +9,10 @@ export default class OrganizationsController extends Controller {
     sort = 'enterprisenumber';
     sortDirection = false; // false for ASC, true for DESC
     search = null;
+    searchByName = null;
+    searchByVat = null;
+    searchByZipCode = null;
+
     @service store;
 
     constructor() {
@@ -16,12 +20,10 @@ export default class OrganizationsController extends Controller {
         this.load();
     }
 
-    load() {
+    load(filter={}) {
         this.set("currentPage", null);
         this.codes = this.store.query('company', {
-            filter: {
-                enterprisenumber: this.search?.toUpperCase()
-            },
+            filter: filter,
             sort: this.sortDirection ? this.sort : '-' + this.sort,
             page: {
                 number: this.page,
@@ -54,17 +56,48 @@ export default class OrganizationsController extends Controller {
     }
 
     @action
-    runSearch(e) {
-        const searchVal = e.target.value;
-        if (searchVal.length === 0) {
-            this.set("search", null);
-            this.load();
-        } else if (searchVal.length >= 10) {
+    runSearchByName() {
+        if (this.searchByName.length >= 2) {
             this.set("currentPage", null);
-            this.set("search", searchVal);
             this.set('page', 0);
-            this.load(searchVal.toUpperCase());
+            this.load({
+                 "denomination": this.searchByName
+             });
         }
+    }
+
+    @action
+    runSearchByVatNumber() {
+        if (this.searchByVat.length >= 2) {
+            this.set("currentPage", null);
+            this.set('page', 0);
+            this.load({
+                 enterprisenumber: this.searchByVat
+             });
+        }
+    }
+
+    @action
+    updateSearchByName(e){
+        const searchVal = e.target.value;
+        this.set('searchByName', e.target.value);
+        if (searchVal.length === 0) {
+            this.load();
+        }
+    }
+
+    @action
+    updateSearchByVatNumber(e){
+        const searchVal = e.target.value;
+        this.set('searchByVat', e.target.value);
+        if (searchVal.length === 0) {
+            this.load();
+        }
+    }
+
+    @action
+    test(){
+        console.log("test");
     }
 
     @action
