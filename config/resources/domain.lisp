@@ -44,7 +44,7 @@
      :has-one `((company :via ,(s-prefix "bi:addressBelongsTo")
                        :as "company")
                 (code :via ,(s-prefix "bi:hasAddressType")
-                       :as "addressType")
+                       :as "addresstype")
 
               )
      :features '(include-uri)
@@ -66,11 +66,11 @@
                 (address :via ,(s-prefix "bi:addressBelongsTo") 
                        :inverse t
                 :as "address")
-                 (code :via ,(s-prefix "bi:hasJuridicalSituation")
+                (code :via ,(s-prefix "bi:hasJuridicalSituation")
                        :as "juridicalsituation")
-                 (code :via ,(s-prefix "bi:hasStatus")
+                (code :via ,(s-prefix "bi:hasStatus")
                        :as "status")
-                 (code :via ,(s-prefix "bi:hasTypeOfCompany")
+                (code :via ,(s-prefix "bi:hasTypeOfCompany")
                        :as "typeofcompany"))
   
      :features '(include-uri)

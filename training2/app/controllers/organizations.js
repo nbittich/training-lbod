@@ -2,11 +2,11 @@ import Controller from '@ember/controller';
 import { action } from "@ember/object";
 import { inject as service } from '@ember/service';
 
-export default class CodesController extends Controller {
+export default class OrganizationsController extends Controller {
     currentPage;
     page = 0;
-    size = 13;
-    sort = 'code';
+    size = 10;
+    sort = 'enterprisenumber';
     sortDirection = false; // false for ASC, true for DESC
     search = null;
     @service store;
@@ -18,9 +18,9 @@ export default class CodesController extends Controller {
 
     load() {
         this.set("currentPage", null);
-        this.codes = this.store.query('code', {
+        this.codes = this.store.query('company', {
             filter: {
-                code: this.search?.toUpperCase()
+                enterprisenumber: this.search?.toUpperCase()
             },
             sort: this.sortDirection ? this.sort : '-' + this.sort,
             page: {
@@ -59,7 +59,7 @@ export default class CodesController extends Controller {
         if (searchVal.length === 0) {
             this.set("search", null);
             this.load();
-        } else if (searchVal.length > 2) {
+        } else if (searchVal.length >= 10) {
             this.set("currentPage", null);
             this.set("search", searchVal);
             this.set('page', 0);
@@ -86,5 +86,4 @@ export default class CodesController extends Controller {
         this.load();
 
     }
-
 }

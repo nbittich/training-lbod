@@ -1,4 +1,4 @@
-<h1>Codes</h1>
+<h1>Organizations</h1>
 {{#if this.currentPage.length }}
 <div class="d-flex justify-content-between mb-2">
     <div class="my-auto">
@@ -27,7 +27,7 @@
                 <th class="text-center">#</th>
                 <th>
                     <div class="d-flex justify-content-between">
-                        <span class="my-auto">Code</span>
+                        <span class="my-auto">VAT N°</span>
                         <span class="my-auto">
                             <a role="button" {{on 'click' this.toggleSort}} class="text-dark">
                                 {{#if this.sortDirection}}
@@ -41,24 +41,25 @@
 
                     </div>
                 </th>
-                <th>Description@fr</th>
-                <th>Description@nl</th>
+                <th>Name@fr</th>
+                <th>Name@nl</th>
+                <th>Start Date</th>
             </tr>
         </thead>
         <tbody>
             {{#unless this.currentPage.length }}
             <tr>
-                <td colspan="4">No data</td>
+                <td colspan="5">No data</td>
             </tr>
             {{else}}
-            {{#each currentPage as |code index|}}
+            {{#each currentPage as |org index|}}
             <tr>
                 <td class="text-center">{{row-number currentPage.meta.pagination index }}</td>
-                <td>{{code.code}}</td>
-                <td>{{code.labelFr.content}}</td>
-                <td>{{code.labelNl.content}}</td>
+                <td>{{org.enterprisenumber}}</td>
+                <td>{{org.denomination.nameFr.content}}</td>
+                <td>{{org.denomination.nameNl.content}}</td>
 
-
+                <td>{{org.startdate}}</td>
             </tr>
             {{/each}}
 
