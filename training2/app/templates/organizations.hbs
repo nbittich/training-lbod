@@ -29,7 +29,12 @@
                 <FaIcon @icon="search"></FaIcon>
             </a>
         </div>
-       
+        <div class="input-group">
+            <input type="search" class="form-control" placeholder="by zipcode" value={{this.searchByZipCode}} {{on 'input' (fn this.updateSearchByZipCode)}} aria-describedby="basic-addon3" aria-label="Filter By ZipCode">
+                 <a role="button" class="input-group-text" id="basic-addon3" {{on 'click' this.runSearchByZipCode}}>
+                <FaIcon @icon="search"></FaIcon>
+            </a>
+        </div>
     </div>
 
 

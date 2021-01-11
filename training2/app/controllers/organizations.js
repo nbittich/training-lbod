@@ -12,6 +12,7 @@ export default class OrganizationsController extends Controller {
     searchByName = null;
     searchByVat = null;
     searchByZipCode = null;
+    filter = {};
 
     @service store;
 
@@ -20,10 +21,10 @@ export default class OrganizationsController extends Controller {
         this.load();
     }
 
-    load(filter={}) {
+    load() {
         this.set("currentPage", null);
         this.codes = this.store.query('company', {
-            filter: filter,
+            filter: this.filter,
             sort: this.sortDirection ? this.sort : '-' + this.sort,
             page: {
                 number: this.page,
@@ -60,9 +61,13 @@ export default class OrganizationsController extends Controller {
         if (this.searchByName.length >= 2) {
             this.set("currentPage", null);
             this.set('page', 0);
-            this.load({
-                 "denomination": this.searchByName
-             });
+            this.set('searchByVat', null);
+            this.set('searchByZipCode', null);
+            
+            this.set('filter',{
+                "denomination": this.searchByName
+            });
+            this.load();
         }
     }
 
@@ -71,9 +76,28 @@ export default class OrganizationsController extends Controller {
         if (this.searchByVat.length >= 2) {
             this.set("currentPage", null);
             this.set('page', 0);
-            this.load({
-                 enterprisenumber: this.searchByVat
-             });
+            this.set('searchByZipCode', null);
+            this.set('searchByName', null);
+            this.set('filter',{
+                enterprisenumber: this.searchByVat
+            });
+            this.load();
+        }
+    }
+
+    @action
+    runSearchByZipCode() {
+        if (this.searchByZipCode.length >= 4) {
+            this.set("currentPage", null);
+            this.set('page', 0);
+            this.set('searchByVat', null);
+            this.set('searchByName', null);
+            this.set('filter',{
+                address: {
+                    zipcode: this.searchByZipCode
+                }
+            });
+            this.load();
         }
     }
 
@@ -82,6 +106,7 @@ export default class OrganizationsController extends Controller {
         const searchVal = e.target.value;
         this.set('searchByName', e.target.value);
         if (searchVal.length === 0) {
+            this.set('filter', {})
             this.load();
         }
     }
@@ -91,13 +116,18 @@ export default class OrganizationsController extends Controller {
         const searchVal = e.target.value;
         this.set('searchByVat', e.target.value);
         if (searchVal.length === 0) {
+            this.set('filter', {})
             this.load();
         }
     }
-
     @action
-    test(){
-        console.log("test");
+    updateSearchByZipCode(e){
+        const searchVal = e.target.value;
+        this.set('searchByZipCode', e.target.value);
+        if (searchVal.length === 0) {
+            this.set('filter', {})
+            this.load();
+        }
     }
 
     @action
