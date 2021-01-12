@@ -47,5 +47,13 @@ export default class OrganizationController extends Controller {
         });
       }
 
+      @action
+      deleteFile(attachment) {
+        const company = this.get('model');
+        company.attachments = (company.attachments?.toArray() || []).filter(a => a.id !== attachment.id);
+        company.save();
+          
+      }
+
 
 }

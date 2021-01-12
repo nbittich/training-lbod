@@ -17,7 +17,15 @@
         </div>
             <ul class="list-group list-group-flush">
                 {{#each @model.attachments as |attachment|}}
-                <li class="list-group-item"><a class="btn btn-link" {{on "click"  (fn this.downloadFile attachment)}}>{{attachment.name}}</a></li>
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                    <a class="btn btn-link" {{on "click"  (fn this.downloadFile attachment)}}>{{attachment.name}}</a>
+                    <button class="btn btn-link text-danger" {{on "click" (fn this.deleteFile attachment)}}>
+                        <FaIcon @icon="trash"></FaIcon>
+                    </button>
+                    </div>
+                    
+                    </li>
                 {{/each}}
             </ul>
     </div>
