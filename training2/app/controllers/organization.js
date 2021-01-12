@@ -24,12 +24,28 @@ export default class OrganizationController extends Controller {
         });
         const upload = await response.json();
         const uploadData = await this.store.findRecord('file', upload.data.id);
-        console.log(upload.attachments)
-        company.attachments = [uploadData];
+        company.attachments = [...(company.attachments?.toArray() || []),uploadData];
         company.save();
         this.set('file', null);
         this.set('isValid', false);
     }
+
+    @action
+    downloadFile(attachment) {
+        let url = `/uploads/${attachment.id}/download`;
+        return fetch(url, {
+          method: 'GET',
+          headers: {
+          }
+        }).then((resp) =>{
+          return resp.blob();
+        }).then((blob) =>{
+            const downloadLink = document.createElement('a');
+            downloadLink.href= window.URL.createObjectURL(blob);
+            downloadLink.setAttribute('download', attachment.name);
+            downloadLink.click();
+        });
+      }
 
 
 }

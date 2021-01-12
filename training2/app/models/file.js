@@ -6,5 +6,4 @@ export default class FileModel extends Model {
     @attr size;
     @attr extension;
     @attr uri;
-    @belongsTo("company") hasattachment;
 }

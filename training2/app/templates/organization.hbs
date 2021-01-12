@@ -13,6 +13,16 @@
 <div class="d-flex flex-column">
     <div class="card mb-1">
         <div class="card-header">
+            Attachments
+        </div>
+            <ul class="list-group list-group-flush">
+                {{#each @model.attachments as |attachment|}}
+                <li class="list-group-item"><a class="btn btn-link" {{on "click"  (fn this.downloadFile attachment)}}>{{attachment.name}}</a></li>
+                {{/each}}
+            </ul>
+    </div>
+    <div class="card mb-1">
+        <div class="card-header">
             Name
         </div>
         <div class="card-body">

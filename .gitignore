@@ -3,7 +3,8 @@
 !/data/db/virtuoso.ini
 !/data/db/toLoad
 !/data/db/toLoad/*
-
+/data/files/*
 docker-compose.override.yml
 .idea
 *.iml
+
