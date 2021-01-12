@@ -3,8 +3,10 @@
 <div class="d-flex  mb-2">
     <div class="text-right">
         <label for="formFile" class="form-label text-right">New attachment</label>
-        <input class="form-control" value={{this.file}} type="file" id="formFile" {{on "change" this.setFile }} accept="image/png,image/jpeg,application/pdf" multiple="false">
-         <button class="btn btn-outline-primary mt-1" {{on "click" this.upload}} disabled={{this.isValid}}>Upload</button>
+        <input class="form-control" value={{this.file}} type="file" id="formFile" {{on "change" this.setFile }}
+            accept="image/png,image/jpeg,application/pdf" multiple="false">
+        <button class="btn btn-outline-primary mt-1" {{on "click" this.upload}}
+            disabled={{this.isValid}}>Upload</button>
     </div>
 </div>
 

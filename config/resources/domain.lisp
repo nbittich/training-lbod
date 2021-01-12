@@ -59,7 +59,11 @@
                      (:created :datetime ,(s-prefix "nfo:fileCreated")))
        :has-one `((file :via ,(s-prefix "nie:dataSource")
                      :inverse t
-                     :as "download"))
+                     :as "download")
+                  (company :via ,(s-prefix "bi:hasAttachment")
+                     :as "hasattachment")   
+                     
+                     )
        :resource-base (s-url "http://bittich.be/bce/files/")
        :features `(include-uri)
        :on-path "files")
@@ -69,6 +73,9 @@
      :properties `((:startdate :string ,(s-prefix "bi:hasStartDate"))
                   (:enterprisenumber :string ,(s-prefix "mu:uuid"))
      )
+      :has-many `((file :via ,(s-prefix "bi:hasAttachment")
+                       :inverse t
+                       :as "attachments"))
       :has-one `((code :via ,(s-prefix "bi:hasJuridicalForm")
                        :as "juridicalform")
                 (denomination :via ,(s-prefix "bi:denominationBelongsTo") 

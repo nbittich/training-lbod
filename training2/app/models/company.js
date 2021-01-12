@@ -1,4 +1,4 @@
-import Model, {belongsTo,attr} from '@ember-data/model';
+import Model, {belongsTo,attr,hasMany} from '@ember-data/model';
 
 export default class CompanyModel extends Model {
     @attr startdate;
@@ -10,5 +10,6 @@ export default class CompanyModel extends Model {
     @belongsTo("code") juridicalsituation;
     @belongsTo("code") status;
     @belongsTo("code") typeofcompany;
+    @hasMany("file") attachments;
 
 }
