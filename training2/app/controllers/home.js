@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { action } from "@ember/object";
 
 export default class HomeController extends Controller {
-  isLoading;
+ /*  isLoading;
   constructor() {
     super();
     this.isLoading = false;
@@ -50,5 +50,5 @@ export default class HomeController extends Controller {
    await individual.save();
    this.toggleProperty('isLoading');
 
-  }
+  } */
 }

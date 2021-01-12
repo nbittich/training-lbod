@@ -1,1 +1,35 @@
-{{outlet}}
+<h1>Register</h1>
+{{#if errorMessage}}
+<div class="alert alert-warning">
+    <span class="error-message">{{errorMessage}}</span>
+</div>
+{{/if}}
+{{#if loading}}
+<div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+{{/if}}
+<form class="form" {{on "submit" (fn this.register)}}>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" placeholder="put your name" type="text" name="name" id="name" {{on "change" (fn
+            this.setName)}} value={{this.name}}>
+    </div>
+    <div class="form-group">
+        <label for="nickname">Nickname</label>
+        <input class="form-control" placeholder="put your nickname" type="text" name="nickname" id="nickname"
+            {{on "change" (fn this.setNickname)}} value={{this.nickname}}>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" placeholder="******" type="password" name="password" id="password" {{on "change" (fn
+            this.setPassword)}} value={{this.password}}>
+    </div>
+    <div class="form-group">
+        <label for="passwordConfirmation">Password Confirmation</label>
+        <input class="form-control" placeholder="******" type="password" name="passwordConfirmation"
+            id="passwordConfirmation" {{on "change" (fn this.setPasswordConfirmation)}}
+            value={{this.passwordConfirmation}}>
+    </div>
+    <button class="btn btn-outline-primary mt-1" type="submit">Register</button>
+</form>
