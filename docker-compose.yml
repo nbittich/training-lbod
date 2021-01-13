@@ -7,7 +7,7 @@ services:
       - dispatcher:dispatcher
     ports:
       - "80:80"
-    environment:
+    #environment:
       #DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: "[{\"variables\":[],\"name\":\"public\"}]"
 
   dispatcher:
