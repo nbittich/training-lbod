@@ -2,6 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
+    emberDataHost: 'http://localhost:4200',
     modulePrefix: 'training2',
     environment,
     rootURL: '/',
@@ -49,6 +50,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+    ENV.emberDataHost='https://dev.bittich.be'
   }
 
   return ENV;
