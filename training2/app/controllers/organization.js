@@ -1,6 +1,8 @@
 import Controller from '@ember/controller';
 import { action } from "@ember/object";
 import { inject as service } from '@ember/service';
+import config from  '../config/environment'; 
+
 export default class OrganizationController extends Controller {
     @service store;
     file;
@@ -32,7 +34,7 @@ export default class OrganizationController extends Controller {
 
     @action
     downloadFile(attachment) {
-        let url = `/uploads/${attachment.id}/download`;
+        let url = `${config.emberDataHost}/uploads/${attachment.id}/download`;
         return fetch(url, {
           method: 'GET',
           headers: {
