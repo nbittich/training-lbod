@@ -50,7 +50,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
-    ENV.emberDataHost='https://dev.bittich.be'
+    ENV.emberDataHost='https://dev.bittich.be/api'
   }
 
   return ENV;
