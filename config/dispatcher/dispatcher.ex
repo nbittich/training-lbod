@@ -12,7 +12,10 @@ defmodule Dispatcher do
   plug :match
   plug :dispatch
 
-
+  options _ do
+    send_resp( conn, 200, "Option calls are accepted by default" )
+  end
+  
   match "/addresses/*path" do
     Proxy.forward conn, path, "http://resource/addresses/"
   end
@@ -49,10 +52,6 @@ defmodule Dispatcher do
 
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
-  end
-
-  options "*_path" do
-    send_resp( conn, 200, "Option calls are accepted by default" )
   end
 
 end
