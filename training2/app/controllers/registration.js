@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 
 import { action } from "@ember/object";
 import { inject as service } from '@ember/service';
+import config from  '../config/environment'; 
 
 export default class RegistrationController extends Controller {
     name = '';
@@ -19,7 +20,7 @@ export default class RegistrationController extends Controller {
 
         this.toggleProperty('loading');
         try {
-            const response = await fetch("/accounts", {
+            const response = await fetch(config.emberDataHost+"/accounts", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/vnd.api+json'

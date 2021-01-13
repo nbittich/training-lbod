@@ -1,12 +1,13 @@
 import Base from 'ember-simple-auth/authenticators/base';
 import fetch, { Headers } from 'fetch';
 import { getOwner } from '@ember/application';
+import config from  '../config/environment'; 
 
 export default class Custom extends Base {
   constructor() {
     super(...arguments);
     const config = getOwner(this).resolveRegistration('config:environment');
-    this.basePath = config['basePath'] || '/sessions';
+    this.basePath = config.emberDataHost +  '/sessions';
   }
 
   async authenticate(options) {

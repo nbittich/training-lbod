@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import {tracked} from "@glimmer/tracking";
 import { inject as service } from '@ember/service';
 import { action } from "@ember/object";
+
 export default class LoginComponent extends Component {
   @tracked errorMessage;
   @service session;
