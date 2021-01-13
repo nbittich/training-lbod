@@ -100,5 +100,5 @@
 (defparameter *include-count-in-paginated-responses* t)
 (defparameter *cache-model-properties-p* t)
 (defparameter *cache-count-queries-p* t)
-(defparameter *supply-cache-headers-p* t)
+;(defparameter *supply-cache-headers-p* t)
 

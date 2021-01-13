@@ -6,7 +6,7 @@ services:
     links:
       - dispatcher:dispatcher
     ports:
-      - "80:80"
+      - "8087:80"
     #environment:
       #DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: "[{\"variables\":[],\"name\":\"public\"}]"
 
