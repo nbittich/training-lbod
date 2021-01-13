@@ -50,11 +50,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://registration/accounts/"
   end
 
-
-  match "/" do
-    Proxy.forward conn, path, "http://localhost:4005"
-  end
-
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
