@@ -79,7 +79,7 @@ export default class OrganizationsController extends Controller {
             this.set('searchByZipCode', null);
             this.set('searchByName', null);
             this.set('filter',{
-                enterprisenumber: this.searchByVat
+                id: this.searchByVat
             });
             this.load();
         }
