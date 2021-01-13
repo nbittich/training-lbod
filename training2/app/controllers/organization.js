@@ -20,7 +20,7 @@ export default class OrganizationController extends Controller {
         const company = this.get('model');
         const formData = new FormData();
         formData.append('file', this.file);
-        const response = await fetch("/uploads", {
+        const response = await fetch(config.emberDataHost+"/uploads", {
             method: 'POST',
             body: formData
         });
