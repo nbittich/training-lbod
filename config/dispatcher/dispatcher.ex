@@ -16,37 +16,37 @@ defmodule Dispatcher do
     send_resp( conn, 200, "Option calls are accepted by default" )
   end
 
-  match "/addresses/*path" do
+  match "/api/addresses/*path" do
     Proxy.forward conn, path, "http://resource/addresses/"
   end
   
-  match "/uploads/*path" do
+  match "/api/uploads/*path" do
     Proxy.forward conn, path, "http://file/files/"
   end
 
-  match "/files/*path" do
+  match "/api/files/*path" do
     Proxy.forward conn, path, "http://resource/files/"
   end
 
-  match "/codes/*path" do
+  match "/api/codes/*path" do
     Proxy.forward conn, path, "http://resource/codes/"
   end
 
-  match "/companies/*path" do
+  match "/api/companies/*path" do
     Proxy.forward conn, path, "http://resource/companies/"
   end
-  match "/contacts/*path" do
+  match "/api/contacts/*path" do
     Proxy.forward conn, path, "http://resource/contacts/"
   end
-  match "/denominations/*path" do
+  match "/api/denominations/*path" do
     Proxy.forward conn, path, "http://resource/denominations/"
   end
 
-  match "/sessions/*path" do
+  match "/api/sessions/*path" do
     Proxy.forward conn, path, "http://login/sessions/"
   end
 
-  match "/accounts/*path" do
+  match "/api/accounts/*path" do
     Proxy.forward conn, path, "http://registration/accounts/"
   end
 
