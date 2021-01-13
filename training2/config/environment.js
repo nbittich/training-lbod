@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    emberDataHost: 'http://localhost:4200',
+    emberDataHost: 'http://localhost:4200/api',
     modulePrefix: 'training2',
     environment,
     rootURL: '/',
