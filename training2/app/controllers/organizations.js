@@ -12,6 +12,9 @@ export default class OrganizationsController extends Controller {
     searchByName = null;
     searchByVat = null;
     searchByZipCode = null;
+    currentPageNumber = null;
+    isFirstPage;
+    isLastPage;
     filter = {};
 
     @service store;
@@ -32,19 +35,23 @@ export default class OrganizationsController extends Controller {
             },
         }).then(data => {
             this.set("currentPage", data);
+            this.set("currentPageNumber",this.currentPageNb())
+            this.set("isFirstPage", this.isFirst() )
+            this.set("isLastPage",this.isLast() )
+
         });
     }
 
-    get isLastPage() {
+    isLast() {
         return this.currentPage?.meta?.pagination?.next?.number === this?.currentPage?.meta?.pagination?.last?.number;
     }
 
-    get isFirstPage() {
+    isFirst() {
         const curr = this.currentPage.meta.pagination.self?.number;
         return !curr || curr === 0;
     }
 
-    get currentPageNumber() {
+    currentPageNb() {
         const curr = this.currentPage.meta.pagination.self?.number;
         return !curr || curr === 0 ? 1 : curr + 1;
     }
