@@ -29,6 +29,7 @@
 (add-prefix "owl" "http://www.w3.org/2002/07/owl#")
 (add-prefix "org" "http://www.w3.org/ns/org#")
 (add-prefix "prov" "http://www.w3.org/ns/prov#")
+(add-prefix "mu" "http://mu.semte.ch/vocabularies/core/")
 (add-prefix "gr" "http://purl.org/goodrelations/v1#")
 (add-prefix "foaf" "http://xmlns.com/foaf/0.1/")
 (add-prefix "bi" "http://bittich.be/bce/")

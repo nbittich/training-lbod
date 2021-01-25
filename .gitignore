@@ -8,3 +8,6 @@ docker-compose.override.yml
 .idea
 *.iml
 
+/data/elasticsearch/**
+/tmp
+.DS_STORE

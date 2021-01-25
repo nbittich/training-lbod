@@ -1,0 +1,51 @@
+{
+    "automatic_index_updates": true,
+    "persist_indexes": true,
+    "types" : [
+        {
+            "type" : "company", 
+            "on_path" : "companies",
+            "rdf_type" : "http://www.w3.org/ns/org#Organization",
+            "properties" : {
+                "startdate" : "http://bittich.be/bce/hasStartDate",
+                "enterprisenumber" : "http://mu.semte.ch/vocabularies/core/uuid"
+            }
+        },
+        {
+            "type" : "address",
+            "on_path" : "addresses",
+            "rdf_type" : "http://bittich.be/bce/Address",
+            "properties" : {
+                "address" : "http://www.w3.org/2001/vcard-rdf/3.0#ADR",
+                "zipcode" : "http://www.w3.org/2001/vcard-rdf/3.0#Pcode"
+            }
+         },
+         {
+             "type" : "contact",
+             "on_path" : "contacts",
+             "rdf_type" : "http://bittich.be/bce/Contact",
+             "properties" : {
+                 "email" : "http://xmlns.com/foaf/0.1/mbox",
+                 "phone" : "http://xmlns.com/foaf/0.1/phone",
+                 "website" : "http://xmlns.com/foaf/0.1/homepage"
+             }
+          },
+          {
+              "type" : "denomination",
+              "on_path" : "denominations",
+              "rdf_type" : "http://bittich.be/bce/Denomination",
+              "properties" : {
+                  "name" : "http://xmlns.com/foaf/0.1/name"
+              }
+           },
+           {
+               "type" : "code",
+               "on_path" : "codes",
+               "rdf_type" : "http://bittich.be/bce/Code",
+               "properties" : {
+                   "label" : "http://www.w3.org/2000/01/rdf-schema#label",
+                   "code" : "http://mu.semte.ch/vocabularies/core/uuid"
+               }
+            }
+    ]
+}

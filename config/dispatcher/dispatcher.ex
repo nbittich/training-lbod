@@ -49,7 +49,9 @@ defmodule Dispatcher do
   match "/api/accounts/*path" do
     Proxy.forward conn, path, "http://registration/accounts/"
   end
-
+  get "/api/search/*path" do
+    Proxy.forward conn, path, "http://search/"
+  end 
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
