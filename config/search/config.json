@@ -8,7 +8,40 @@
             "rdf_type" : "http://www.w3.org/ns/org#Organization",
             "properties" : {
                 "startdate" : "http://bittich.be/bce/hasStartDate",
-                "enterprisenumber" : "http://mu.semte.ch/vocabularies/core/uuid"
+                "enterprisenumber" : "http://mu.semte.ch/vocabularies/core/uuid",
+                "denomination": {
+                    "via": "http://bittich.be/bce/denominationBelongsTo",
+                    "rdf_type" : "http://bittich.be/bce/Denomination",
+                    "properties" : {
+                        "name" : "http://xmlns.com/foaf/0.1/name"
+                    }
+                },
+                "contact": {
+                    "via": "http://bittich.be/bce/contactBelongsTo",
+                    "rdf_type" : "http://bittich.be/bce/Contact",
+                    "properties" : {
+                        "email" : "http://xmlns.com/foaf/0.1/mbox",
+                        "phone" : "http://xmlns.com/foaf/0.1/phone",
+                        "website" : "http://xmlns.com/foaf/0.1/homepage"
+                    }
+                },
+                "address": {
+                    "via": "http://bittich.be/bce/addressBelongsTo",
+                    "properties" : {
+                        "address" : "http://www.w3.org/2001/vcard-rdf/3.0#ADR",
+                        "zipcode" : "http://www.w3.org/2001/vcard-rdf/3.0#Pcode"
+                    }
+                }
+            },
+            "mappings": {
+                "startdate" : { "type" : "text" },
+                "enterprisenumber" : { "type" : "text" },
+                "denomination.name": { "type" : "text" },
+                "contact.email": { "type" : "text" },
+                "contact.phone": { "type" : "text" },
+                "contact.website": { "type" : "text" },
+                "address.address": { "type" : "text" },
+                "address.zipcode": { "type" : "text" }
             }
         },
         {
