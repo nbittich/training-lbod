@@ -42,6 +42,9 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/denominations/"
   end
 
+  match "/api/plates/*path" do
+    Proxy.forward conn, path, "http://resource/plates/"
+  end
   match "/api/sessions/*path" do
     Proxy.forward conn, path, "http://login/sessions/"
   end

@@ -97,6 +97,26 @@
      :features '(include-uri)
      :on-path "companies")
 
+(define-resource plate ()
+     :class (s-prefix "bi:Plate")
+     :resource-base (s-url "http://bittich.be/bce/plates/")
+     :properties `((:title :string ,(s-prefix "bi:title"))
+                  (:label :string ,(s-prefix "rdfs:label"))
+                  (:comment :string ,(s-prefix "rdfs:comment")))
+      :has-many `((plate :via ,(s-prefix "bi:seeAlso")
+                       :inverse t
+                       :as "conjunctions"))
+      :has-one `((file :via ,(s-prefix "bi:hasAttachment")
+                       :inverse t
+                       :as "attachment"))
+  
+     :features '(include-uri)
+     :on-path "plates")
+
+
+
+
+
 (defparameter *include-count-in-paginated-responses* t)
 (defparameter *cache-model-properties-p* t)
 (defparameter *cache-count-queries-p* t)
